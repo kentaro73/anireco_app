@@ -1,0 +1,6 @@
+.mb-3
+  .nav.justify-content-end
+    = link_to 'List', posts_path, class: 'nav-link'
+
+  = render partial: 'form', locals: { post: @post }
+

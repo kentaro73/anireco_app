@@ -1,0 +1,19 @@
+/ .post-index
+/   .bg
+/     .search
+/       = render partial: "search"
+    
+/     .post-n-tag
+/       .post_lists
+/         = render partial: 'post_list', locals: { post: @posts }
+/       .tag_side
+/         = render partial: "tag", locals: { tag_list: @tag_list } 
+
+      
+/     .pagenation
+/       = paginate @posts
+/     .post-btn
+/       = link_to "Register", new_post_path,  class: "btn btn-primary"
+    
+/     .tag_bottom.m-3
+/       = render partial: "tag", locals: { tag_list: @tag_list }
