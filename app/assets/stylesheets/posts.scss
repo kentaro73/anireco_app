@@ -1,3 +1,209 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.search {
+  margin: 10px 10px;
+}
+.search-form {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  justify-content: center;
+}
+.search-title {
+  padding-left: 3px;
+}
+.search-cast {
+  padding-left: 3px;
+}
+.search-episode {
+  padding-left: 3px;
+}
+// 投稿、タグリスト
+.post-n-tag {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;  
+  margin-top: 20px;
+}
+.post_lists {
+  margin-left: 2%;
+  -webkit-box-flex: 5;
+  -ms-flex: 5;
+  flex: 5;
+  display: flex;
+  flex-wrap: wrap;
+}
+.tag_side {
+  margin-right: 100px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+// タグ検索結果
+.search-results {
+  .tag_side {
+    margin: 10px 0 0 50px;
+  }
+  .tag_bottom {
+    margin-top: 30px;
+  }
+}
+
+
+// タグリスト
+@media screen and (max-width: 1000px) {
+  .tag_side {
+    display: none;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .tag_bottom {
+    display: none;
+  }
+}
+// 投稿スタイル
+.post-frame { 
+  box-shadow: 0px 0px 2px;
+  border: 1px solid skyblue;
+  width: 30%;
+  box-sizing: border-box;
+  margin: 10px 10px ;
+  padding: 10px;
+  a {
+    text-decoration: none;
+  }
+  .user {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;    
+  }
+  .user-name {
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+  .user-icon {
+    border-radius: 50%;
+  }
+  .inner-image {
+    position: relative;
+    .caption {
+      font-size: 130%;
+      text-align: center;
+      color: #fff;
+    }
+    .mask {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      background-color: rgba(0,0,0,0.4);
+      -webkit-transition: all 0.6s ease;
+      transition: all 0.6s ease;
+    }
+  }
+  .inner-image:hover .mask {
+    opacity: 1;
+    padding-top: 50px;
+  }
+}
+
+.field_with_errors { 
+  display: contents;
+}
+
+// アニメ画像
+.anime-image-outer {
+}
+// ページネーション
+.pagenation{
+  li{
+    a {
+      border: none;
+      color: #696969;
+    }
+    a:hover {
+      border-radius: 15px;
+    }
+  }
+  .active {
+    a {
+      background: #93c9ff;
+      border-radius: 15px;
+    }
+  }
+}
+.pagination {
+  justify-content: center;
+}
+// アイコン
+.fa-yellow {
+  color: #ffa500;
+  a {
+    color: #ffa500;
+  }
+}
+.comment-icon-color {
+  color: gray;
+}
+// 投稿ボタン
+.post-btn {
+  position: fixed;
+  bottom: 0;
+  right: 2%;
+  padding: 10px 0 10px 0;
+}
+.post-btn a {
+  display: block; 
+  text-decoration: none;
+}
+.post-btn a:hover {
+  opacity: 0.8;
+}
+// 投稿詳細ページ
+.post-show {
+  .post-frame {
+    width: calc(100%/3);
+    height: 80%;
+    box-shadow: 0px 0px 2px;
+    border: 1px solid skyblue;
+    margin: 0 0 20px 10%;
+    padding: 10px;
+  
+  }
+  .post-n-description {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;  
+  }
+  .description {
+    margin-left: 10%;
+  }
+  .user {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;  
+  }
+}
+.comments {
+  .comment-content {
+    padding: 5px 0 0 0;
+  }
+  .user-info {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;  
+  }
+  .user-name-created_at {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;  
+  }
+
+}
