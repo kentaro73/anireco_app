@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  devise_for :users
   root "posts#index"
   get 'welcomes', to: 'welcomes#index'
   resources :posts
