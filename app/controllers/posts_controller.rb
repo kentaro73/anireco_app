@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     redirect_to "/welcomes" unless user_signed_in?
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(9)
   end
 
   def show

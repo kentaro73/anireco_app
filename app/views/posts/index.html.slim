@@ -10,8 +10,8 @@
         = render partial: "tag", locals: { tag_list: @tag_list } 
 
       
-    / .pagenation
-    /   = paginate @posts
+    .pagenation
+      = paginate @posts
     .post-btn
       = link_to "Post", new_post_path,  class: "btn btn-primary"
     
