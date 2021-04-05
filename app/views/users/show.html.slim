@@ -12,6 +12,10 @@
 .user-posted
   .watched-anime.pt-3
     p Posted animations
+  .episode-count.text-right
+    span Total: 
+    span= "#{@user.posts.all.sum(:episode)} episodes"
+
 .user-posts
   - @user.posts.each do |post|
     .post-frame

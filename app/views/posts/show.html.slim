@@ -19,7 +19,10 @@
             th= Post.human_attribute_name(:title)
             td= @post.title.blank? ? "Unregistered" : @post.title
             td
-
+          tr
+            th= Post.human_attribute_name(:episode)
+            td= @post.episode.blank? ?  "Unregistered" : "#{@post.episode} episodes"
+            td
     / 投稿した本人と、管理者のみ表示
     - if current_user && @post.user_id == current_user.id || current_user&.admin?
       .text-right
