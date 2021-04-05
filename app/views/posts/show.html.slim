@@ -28,3 +28,9 @@
       .text-right
         = link_to 'Edit', edit_post_path, class: 'btn btn-outline-success'
         = link_to 'Delete', @post, method: :delete, id: "delete_post", data: { confirm: "#{@post.title} will be deleted. Are you sure?" }, class: 'btn btn-outline-danger ml-2'
+    .comment
+      h2 #{@post.comments.count} comments
+
+      = render "comments/error_messages"
+
+      = render "posts/comment"        

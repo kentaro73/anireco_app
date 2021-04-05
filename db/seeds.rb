@@ -33,5 +33,8 @@ users = User.order(:created_at).take(6)
 # アニメタイトル
 title = Faker::Movie.title
 
-users.each {|user| user.posts.create!(title: title) }
+episode = rand(10..100)
+
+users.each {|user| user.posts.create!(title: title,
+    episode: episode) }
 end

@@ -1,7 +1,12 @@
 class Post < ApplicationRecord
+  # バリデーション
   validates :title, presence: true
-  has_one_attached :image           # active_storage
+  # active storage
+  has_one_attached :image
+  # アソシエーション
   belongs_to :user  
+  has_many :comments
+
   default_scope -> { order(created_at: :desc) }
   before_create :default_image
   

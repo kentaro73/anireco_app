@@ -10,6 +10,8 @@ class PostsController < ApplicationController
 
   def show
     @user = @post.user
+    @comments = @post.comments.all
+    @comment = Comment.new
   end
 
   def new
@@ -18,7 +20,6 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-
     if @post.save
       redirect_to root_path, notice: "#{@post.title} posted successfully."
     else
