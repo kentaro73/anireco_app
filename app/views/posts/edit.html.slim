@@ -1,2 +1,7 @@
-h1 Posts#edit
-p Find me in app/views/posts/edit.html.slim
+h1 Edit Post
+
+.nav.justify-content-end
+  = link_to "List", posts_path, class: "nav-link"
+
+= render partial: 'form', locals: { post: @post }
+
