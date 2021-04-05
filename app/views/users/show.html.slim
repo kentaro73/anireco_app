@@ -1,2 +1,27 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+.user-top
+  .user-icon.text-center
+    - if @user.avatar.attached?
+      = image_tag @user.avatar, size: "300x300", class: 'rounded-circle'
+    - else
+      = image_tag "default_icon.png", size: "100x100", class: 'rounded-circle'
+    .user-name.
+      = @user.name
+- if current_user&.id == @user.id
+  .edit-and-delete.mt-3.text-center
+    span= link_to "Edit", edit_user_registration_path, class: "btn btn-outline-success"
+.user-posted
+  .watched-anime.pt-3
+    p Posted animations
+.user-posts
+  - @user.posts.each do |post|
+    .post-frame
+      .inner-image= link_to post
+        = image_tag post.image.variant(resize_to_fill: [900, 900]), class: "img-fluid" if post.image.attached?
+        .anime-title.mask
+          .caption
+            = post.title
+
+
+
+
+
