@@ -3,5 +3,19 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :posts
+  has_many :posts, dependent: :destroy
+  has_one_attached :avatar, dependent: :destroy
+  validates :name, presence: true, length: { maximum: 20 }
+  before_validation :set_nameless_name
+  before_create :default_avatar
+
+  def set_nameless_name
+    self.name = "Guest" if name.blank?
+  end
+
+  def default_avatar
+    unless self.avatar.attached?
+      self.avatar.attach(io: File.open(Rails.root.join("app", "assets", "images", "default_icon.png")), filename: "default_icon.png", content_type: "image/png")
+    end
+  end
 end

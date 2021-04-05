@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
   before_action :find_params, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def index
+    redirect_to "/welcomes" unless user_signed_in?
     @posts = Post.all
   end
 
   def show
-    @post = Post.find(params[:id])
+    @user = @post.user
   end
 
   def new
@@ -13,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       redirect_to root_path, notice: "#{@post.title} posted successfully."
@@ -27,7 +31,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to root_path, notice: "{@post.title} updated successfully."
+      redirect_to root_path, notice: "#{@post.title} updated successfully."
     else
       render :edit
     end
@@ -46,5 +50,10 @@ class PostsController < ApplicationController
 
     def find_params
       @post = Post.find(params[:id])
+    end
+
+    def correct_user
+      @post = Post.find_by(id: params[:id])
+      redirect_to root_path, notice: "You're not authorized." unless @post.user_id == current_user.id || current_user.admin?
     end
 end

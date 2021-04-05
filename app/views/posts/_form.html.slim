@@ -8,5 +8,8 @@
     = f.label :title
     span.text-danger  *
     = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :image
+    = f.file_field :image, class: 'form-control'
   .text-right
-    = f.submit "Register", class: 'btn btn-primary'
+    = f.submit "Post", class: 'btn btn-primary'
