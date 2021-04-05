@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name, presence: true, length: { maximum: 30 }
   before_validation :set_nameless_name
   before_create :default_avatar
 
